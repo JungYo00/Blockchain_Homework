@@ -22,7 +22,7 @@ def snapshot_utxoset():
     print('--------------------------------------------------------------------------------snapshot_utxoset--------------------------------------------------------------------------------')
     IDX = 0
     for i in range(len(transaction.UTXO)):
-        if transaction.UTXO['input_ptxid'][i] != None:
+        if pd.notna(transaction.UTXO['input_ptxid'][i]):
             print('utxo' + str(IDX) + ': ' + str(transaction.UTXO['input_ptxid'][i]) + ', ' + str(int(transaction.UTXO['input_output index'][i])) + ', ' + str(int(transaction.UTXO['input_amount'][i])) + ', ' + str(transaction.UTXO['input_locking script'][i]))
             IDX = IDX + 1
     print('-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------')
