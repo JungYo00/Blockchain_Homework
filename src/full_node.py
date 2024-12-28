@@ -13,7 +13,7 @@ Transactions_Valid = []
 # ---------------------------------------- snapshot -----------------------------------
 def snapshot_transactions():
     print('------------------------------------------------snapshot_transactions------------------------------------------------')
-    for i in range(transaction.TX_idx):
+    for i in range(len(Transactions_Txid)):
         print('transaction: ' + Transactions_Txid[i].hex() + ', '  +  'validity check: ' +  Transactions_Valid[i])
     print('---------------------------------------------------------------------------------------------------------------------')
     print('\n\n')
