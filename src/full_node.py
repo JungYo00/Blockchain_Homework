@@ -141,11 +141,13 @@ for tx_idx in range(len(transaction.UTXO["input_ptxid"])):
 
     # 현재 transcation 유효성 확인 후 유효하면 사용한 UTXO 제거 후 생성된 UTXO 추가
     if execution_engine.CHECKFINALRESULT():
+        # Get_TXID 는 UTXO 행을 읽어서 해시하므로, 행을 비우기 전에 먼저 구한다
+        TXID = transaction.Get_TXID(transaction.TX_idx, transaction.Output_cnt).hex()
+
         transaction.UTXO.drop(transaction.TX_idx).reset_index(drop=True, inplace=True)
         transaction.UTXO.loc[transaction.TX_idx] = [None] * 4  # 모든 열에 None 값을 입력
 
         # UTXO 추가
-        TXID = transaction.Get_TXID(transaction.TX_idx, transaction.Output_cnt).hex()
         A = 'output_index'
         B = 'output_amount'
         C = 'output_locking script'
